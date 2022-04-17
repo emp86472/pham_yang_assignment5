@@ -1,21 +1,38 @@
 #include "Sorting.h"
 
-void Sorting::selectionSort(int num[]) {
-
+long Sorting::selectionSort(int num[], int size) {
+    //find lowest value
+    long comparisons = 0;
+    //loop to second to last index
+    for (int j = 0, i = 0; j < size - 1; j++) {
+        int current = num[j];
+        int index = j;
+        //loop from j + 1 to the last index
+        for (i = j + 1; i < size; i++) {
+            if (num[i] < current) {
+                current = num[i];
+                index = i;
+            } //if
+            comparisons++;
+        } //for
+        num[index] = num[j];
+        num[j] = current;
+    } //for
+    return comparisons;
 } //selectionSort
 
-void Sorting::mergeSort(int num[]) {
-
+long Sorting::mergeSort(int num[], int size) {
+    return 0;
 } //mergeSort
 
-void Sorting::heapSort(int num[]) {
-
+long Sorting::heapSort(int num[], int size) {
+    return 0;
 } //heapSort
 
-void Sorting::quickSortFP(int num[]) {
-
+long Sorting::quickSortFP(int num[], int size) {
+    return 0;
 } //quickSortFP
 
-void Sorting::quickSortRP(int num[]) {
-
+long Sorting::quickSortRP(int num[], int size) {
+    return 0;
 } //quickSortRP

@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
     } //if
 
     int number;
+    int size = 10000;
     int num[10000];
     for (int i = 0; file >> number; i++) {
         num[i] = number;
@@ -27,9 +28,10 @@ int main(int argc, char *argv[]) {
 
     file.close();
 
-    for (int i = 0; i < 10000; i++) {
+    long comparisons = Sorting::selectionSort(num, size);
+    for (int i = 0; i < size; i++) {
         cout << num[i] << endl;
     } //for
-
-
+    cout << "number of comparisons: ";
+    cout << comparisons << endl;
 } //main
