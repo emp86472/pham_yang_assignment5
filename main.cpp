@@ -40,21 +40,27 @@ int main(int argc, char *argv[]) {
     } // for
     cout << endl;
     if (sort == 's') {
-        cout << "#Selection-sort comparison: " << Sorting::selectionSort(num, size);
+        cout << "#Selection-sort comparison: " << Sorting::selectionSort(num, size) << endl;
+        exit(1);
     } // if
     if (sort == 'm') {
-        cout << "#Merge-sort comparisons: " << Sorting::mergeSort(num, size);
+        cout << "#Merge-sort comparisons: " << Sorting::mergeSort(num, size) << endl;
+        exit(1);
     } // if
     if (sort == 'h') {
-        cout << "#Heap-sort comparisons: " << Sorting::heapSort(num, size);
+        cout << "#Heap-sort comparisons: " << Sorting::heapSort(num, size) << endl;
+        exit(1);
     } // if
     if (sort == 'q') {
-        cout << "#Quick-sort-fp comparisons: " << Sorting::quickSortFP(num, size);
+        cout << "#Quick-sort-fp comparisons: " << Sorting::quickSortFP(num, size) << endl;
+        exit(1);
     } // if
     if (sort == 'r') {
-        cout << "#Quick-sort-rp comparisons: " << Sorting::quickSortRP(num, size);
+        cout << "#Quick-sort-rp comparisons: " << Sorting::quickSortRP(num, size) << endl;
+        exit(1);
     } // if
     else {
         cout << "invalid command" << endl;
+        exit(0);
     } // else
 } //main
