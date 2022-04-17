@@ -28,10 +28,33 @@ int main(int argc, char *argv[]) {
 
     file.close();
 
-    long comparisons = Sorting::selectionSort(num, size);
-    for (int i = 0; i < size; i++) {
-        cout << num[i] << endl;
-    } //for
-    cout << "number of comparisons: ";
-    cout << comparisons << endl;
+    cout << "selection-sort (s)  merge (m)  heap-sort (h)  quick-sort-fp (q)" << endl;
+    cout << "quick-sort-rp (r)" << endl;
+    cout << "Enter the algorithm: ";
+    char sort;
+    cin >> sort;
+    cout << endl;
+
+    for (int i = 0; i < 10000; i++) {
+        cout << num[i] << " ";
+    } // for
+    cout << endl;
+    if (sort == 's') {
+        cout << "#Selection-sort comparison: " << Sorting::selectionSort(num, size);
+    } // if
+    if (sort == 'm') {
+        cout << "#Merge-sort comparisons: " << Sorting::mergeSort(num, size);
+    } // if
+    if (sort == 'h') {
+        cout << "#Heap-sort comparisons: " << Sorting::heapSort(num, size);
+    } // if
+    if (sort == 'q') {
+        cout << "#Quick-sort-fp comparisons: " << Sorting::quickSortFP(num, size);
+    } // if
+    if (sort == 'r') {
+        cout << "#Quick-sort-rp comparisons: " << Sorting::quickSortRP(num, size);
+    } // if
+    else {
+        cout << "invalid command" << endl;
+    } // else
 } //main
