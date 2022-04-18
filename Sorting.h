@@ -4,11 +4,15 @@
 class Sorting {
 
 public:
-    static long selectionSort(int num[], int size);
-    static long mergeSort(int num[], int size);
-    static long heapSort(int num[], int size);
-    static long quickSortFP(int num[], int size);
-    static long quickSortRP(int num[], int size);
+    static void selectionSort(int num[], int size);
+    static void mergeSort(int num[], int size);
+    static void heapSort(int num[], int size);
+    static void quickSortFP(int num[], int start, int end);
+    static void quickSortRP(int num[], int start, int end);
+    static long getComparisons();
+    static void setComparisons(long num);
+private:
+    static long comparisons;
 
 }; //Sorting
 

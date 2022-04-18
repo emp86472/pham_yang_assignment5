@@ -40,23 +40,33 @@ int main(int argc, char *argv[]) {
     } // for
     cout << endl;
     if (sort == 's') {
-        cout << "#Selection-sort comparison: " << Sorting::selectionSort(num, size) << endl;
+        Sorting::setComparisons(0);
+        Sorting::selectionSort(num, size);
+        cout << "#Selection-sort comparison: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'm') {
-        cout << "#Merge-sort comparisons: " << Sorting::mergeSort(num, size) << endl;
+        Sorting::setComparisons(0);
+        Sorting::mergeSort(num, size);
+        cout << "#Merge-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'h') {
-        cout << "#Heap-sort comparisons: " << Sorting::heapSort(num, size) << endl;
+        Sorting::setComparisons(0);
+        Sorting::heapSort(num, size);
+        cout << "#Heap-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'q') {
-        cout << "#Quick-sort-fp comparisons: " << Sorting::quickSortFP(num, size) << endl;
+        Sorting::setComparisons(0);
+        Sorting::quickSortFP(num, 0, 10000);
+        cout << "#Quick-sort-fp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'r') {
-        cout << "#Quick-sort-rp comparisons: " << Sorting::quickSortRP(num, size) << endl;
+        Sorting::setComparisons(0);
+        Sorting::quickSortRP(num, 0, 10000);
+        cout << "#Quick-sort-rp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     else {
