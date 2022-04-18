@@ -3,7 +3,16 @@
 
 using namespace std;
 
-long Sorting::selectionSort(int num[], int size) {
+long Sorting::getComparisons() {
+    return comparisons;
+} // getComparisons
+
+void Sorting::setComparisons(long num) {
+    comparisons = num;
+} // setComparisons
+
+void Sorting::selectionSort(int num[], int size) {
+    //find lowest value
     //loop to second to last index
     comparisons = 0;
     for (int j = 0, i = 0; j < size - 1; j++) {
@@ -20,7 +29,6 @@ long Sorting::selectionSort(int num[], int size) {
         num[index] = num[j];
         num[j] = current;
     } //for
-    return comparisons;
 } //selectionSort
 
 int * Sorting::mergeSort(int num[], int size) {
@@ -53,16 +61,34 @@ int * Sorting::mergeSort(int num[], int size) {
     return mergeArrays(mergeSort(Larr, l), l, mergeSort(Rarr, r), r);
 } //mergeSort
 
-long Sorting::heapSort(int num[], int size) {
-    return 0;
+void Sorting::heapSort(int num[], int size) {
+
 } //heapSort
 
-long Sorting::quickSortFP(int num[], int size) {
-    return 0;
+void Sorting::quickSortFP(int num[], int start, int end) {
+    if (start < end) {
+        int part; // partitioning index
+        int pivot = num[start]; // pivot
+        int i = (start - 1);
+        for (int j = start + 1; j <= end; j++) {
+            if (num[j] < pivot) {
+                i++;
+                int t = num[i];
+                num[i] = num[j];
+                num[j] = t;
+            } // if
+            comparisons++;
+        } // for
+         int t = num[i + 1];
+         num[i + 1] = num[end];
+         num[end] = t;
+         part = i + 1;
+         quickSortFP(num, start, part - 1);
+         quickSortFP(num, part + 1, end);
+    } // if
 } //quickSortFP
 
-long Sorting::quickSortRP(int num[], int size) {
-    return 0;
+void Sorting::quickSortRP(int num[], int start, int end) {
 } //quickSortRP
 
 int * Sorting::mergeArrays(int Larr[], int l, int Rarr[], int r) {
