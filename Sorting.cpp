@@ -1,9 +1,11 @@
 #include "Sorting.h"
+#include <iostream>
+
+using namespace std;
 
 long Sorting::selectionSort(int num[], int size) {
-    //find lowest value
-    long comparisons = 0;
     //loop to second to last index
+    comparisons = 0;
     for (int j = 0, i = 0; j < size - 1; j++) {
         int current = num[j];
         int index = j;
@@ -21,8 +23,34 @@ long Sorting::selectionSort(int num[], int size) {
     return comparisons;
 } //selectionSort
 
-long Sorting::mergeSort(int num[], int size) {
-    return 0;
+int * Sorting::mergeSort(int num[], int size) {
+    if (size == 1) {
+        return num;
+    } //if
+    //create 2 subarrays
+    int l = size / 2;
+    int r = size / 2;
+    if (size % 2 != 0) {
+        r++;
+    } //if
+    int *Larr = new int[l];
+    int *Rarr = new int[r];
+
+    //fill leftarray
+    for (int i = 0; i < l; i++) {
+        Larr[i] = num[i];
+        //cout << Larr[i];
+    } //for
+    //cout << endl;
+
+    //fill rightarray
+    for (int i = l, j = 0; j < r; i++, j++) {
+        Rarr[j] = num[i];
+        //cout << Rarr[j];
+    } //for
+    //cout << endl;
+
+    return mergeArrays(mergeSort(Larr, l), l, mergeSort(Rarr, r), r);
 } //mergeSort
 
 long Sorting::heapSort(int num[], int size) {
@@ -36,3 +64,28 @@ long Sorting::quickSortFP(int num[], int size) {
 long Sorting::quickSortRP(int num[], int size) {
     return 0;
 } //quickSortRP
+
+int * Sorting::mergeArrays(int Larr[], int l, int Rarr[], int r) {
+    int *arr = new int[l + r];
+    //l&r are the sizes
+    //left&right are the indeces
+    for (int i = 0, left = 0, right = 0; i < l + r; i++) {
+
+        if (left < l && right < r) {
+            if (Larr[left] > Rarr[right]) {
+                arr[i] = Rarr[right];
+                right++;
+            } else {
+                arr[i] = Larr[left];
+                left++;
+            } //if
+        } else if (left >= l && right < r) {
+            arr[i] = Rarr[right];
+            right++;
+        } else if (right >= r && left < l) {
+            arr[i] = Larr[left];
+            left++;
+        } //if
+    } //for
+    return arr;
+} //mergeArrays
