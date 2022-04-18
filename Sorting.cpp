@@ -3,18 +3,29 @@
 
 using namespace std;
 
+long Sorting::comparisons = 0;
+
+/**
+ * Returns the number of comparisons.
+ * Use after calling the sorting algorithm.
+ */
 long Sorting::getComparisons() {
     return comparisons;
 } // getComparisons
 
-void Sorting::setComparisons(long num) {
-    comparisons = num;
+/**
+ * Must be called after every sorting algorithm.
+ */
+void Sorting::resetComparisons() {
+    comparisons = 0;
 } // setComparisons
 
+/**
+ * Sorts the array passed by reference.
+ */
 void Sorting::selectionSort(int num[], int size) {
     //find lowest value
     //loop to second to last index
-    comparisons = 0;
     for (int j = 0, i = 0; j < size - 1; j++) {
         int current = num[j];
         int index = j;
@@ -31,6 +42,9 @@ void Sorting::selectionSort(int num[], int size) {
     } //for
 } //selectionSort
 
+/**
+ * Returns a pointer to a new sorted array
+ */
 int * Sorting::mergeSort(int num[], int size) {
     if (size == 1) {
         return num;
@@ -91,6 +105,10 @@ void Sorting::quickSortFP(int num[], int start, int end) {
 void Sorting::quickSortRP(int num[], int start, int end) {
 } //quickSortRP
 
+/**
+ * A helper method for mergeSort.
+ * Merges 2 arrays in ascending order.
+ */
 int * Sorting::mergeArrays(int Larr[], int l, int Rarr[], int r) {
     int *arr = new int[l + r];
     //l&r are the sizes
@@ -105,6 +123,7 @@ int * Sorting::mergeArrays(int Larr[], int l, int Rarr[], int r) {
                 arr[i] = Larr[left];
                 left++;
             } //if
+            comparisons++;
         } else if (left >= l && right < r) {
             arr[i] = Rarr[right];
             right++;

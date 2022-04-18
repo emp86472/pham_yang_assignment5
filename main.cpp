@@ -35,36 +35,34 @@ int main(int argc, char *argv[]) {
     cin >> sort;
     cout << endl;
 
+    /**
     for (int i = 0; i < 10000; i++) {
         cout << num[i] << " ";
     } // for
     cout << endl;
+    */
+
     if (sort == 's') {
-        Sorting::setComparisons(0);
         Sorting::selectionSort(num, size);
         cout << "#Selection-sort comparison: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'm') {
-        Sorting::setComparisons(0);
-        Sorting::mergeSort(num, size);
+        int * arr = Sorting::mergeSort(num, size);
         cout << "#Merge-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'h') {
-        Sorting::setComparisons(0);
         Sorting::heapSort(num, size);
         cout << "#Heap-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'q') {
-        Sorting::setComparisons(0);
         Sorting::quickSortFP(num, 0, 10000);
         cout << "#Quick-sort-fp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'r') {
-        Sorting::setComparisons(0);
         Sorting::quickSortRP(num, 0, 10000);
         cout << "#Quick-sort-rp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
@@ -73,5 +71,4 @@ int main(int argc, char *argv[]) {
         cout << "invalid command" << endl;
         exit(0);
     } // else
->>>>>>> bee0d1c2da5c268a35b4bb9ff60e246f59a5aecd
 } //main

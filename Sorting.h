@@ -11,7 +11,7 @@ public:
     static void quickSortFP(int num[], int start, int end);
     static void quickSortRP(int num[], int start, int end);
     static long getComparisons();
-    static void setComparisons(long num);
+    static void resetComparisons();
 
 private:
     static long comparisons;
