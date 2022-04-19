@@ -97,6 +97,7 @@ void Sorting::quickSortFP(int num[], int start, int end) {
         if (num[start] > num[end]) {
             swap(num[start], num[end]);
         } //if
+        comparisons++;
         return;
     } //if
     int p = start; //pivot
@@ -113,6 +114,7 @@ void Sorting::quickSortFP(int num[], int start, int end) {
             ra = 0; //right add
             fr = true;
         } //if
+        comparisons += 2;
         if (fl && fr) {
             swap(num[l], num[r]);
             fl = false;
