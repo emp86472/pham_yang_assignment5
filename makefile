@@ -1,14 +1,19 @@
 MAIN = main2
 
-compile:
+compile2:
 	g++ -c -Wall -pedantic-errors Sorting.cpp
-	g++ -c -Wall -pedantic-errors $(MAIN).cpp
+	g++ -c -Wall -pedantic-errors main2.cpp
 
-link: compile
-	g++ -o $(MAIN) $(MAIN).o Sorting.o
+compile1:
+	g++ -c -Wall -pedantic-errors Sorting.cpp
+	g++ -c -Wall -pedantic-errors main.cpp
 
-run: link
-	./$(MAIN) random.txt
+link1: compile1
+	g++ -o main main.o Sorting.o
+
+link2: compile2
+	g++ -o main2 main2.o Sorting.o
 
 clean:
-	rm -f $(MAIN) Sorting.o $(MAIN).o
+	rm -f main Sorting.o main.o
+	rm -f main2 Sorting.o main2.o
