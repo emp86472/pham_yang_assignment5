@@ -1,12 +1,14 @@
+MAIN = test
+
 compile:
 	g++ -c -Wall -pedantic-errors Sorting.cpp
-	g++ -c -Wall -pedantic-errors main.cpp
+	g++ -c -Wall -pedantic-errors $(MAIN).cpp
 
 link: compile
-	g++ -o main main.o Sorting.o
+	g++ -o $(MAIN) $(MAIN).o Sorting.o
 
 run: link
-	./main random.txt
+	./$(MAIN) random.txt
 
 clean:
-	rm -f main Sorting.o main.o
+	rm -f $(MAIN) Sorting.o $(MAIN).o
