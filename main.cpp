@@ -61,13 +61,15 @@ int main(int argc, char *argv[]) {
         exit(1);
     } // if
     if (sort == 'q') {
-        Sorting::quickSortFP(num, 0, 10000);
+        Sorting::quickSortFP(num, 0, size - 1);
         cout << "#Quick-sort-fp comparisons: " << Sorting::getComparisons() << endl;
+        printArray(num, size);
         exit(1);
     } // if
     if (sort == 'r') {
-        Sorting::quickSortRP(num, 0, 10000);
+        Sorting::quickSortRP(num, 0, size - 1);
         cout << "#Quick-sort-rp comparisons: " << Sorting::getComparisons() << endl;
+        printArray(num, size);
         exit(1);
     } // if
     else {
