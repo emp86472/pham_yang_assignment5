@@ -4,6 +4,7 @@
 #include <vector>
 #include <bits/stdc++.h>
 #include "Sorting.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -23,7 +24,13 @@ int main(int argc, char *argv[]) {
         num[i] = i;
     }
 
-    random_shuffle(num, num + size);
+    for (int i = 0; i < size;i++) {
+        srand(time(0) + i);
+        int j = rand()%size;
+        int t = num[i];
+        num[i] = num[j];
+        num[j] = t;
+    } // for
 
     for (int i = 0; i < size;i++) {
         cout << num[i] << " ";
