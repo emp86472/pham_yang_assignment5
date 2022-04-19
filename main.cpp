@@ -7,6 +7,13 @@
 
 using namespace std;
 
+void printArray(int num[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << num[i] << " ";
+    } //for
+    cout << endl;
+} //printArray
+
 int main(int argc, char *argv[]) {
 
     ifstream file;
@@ -35,25 +42,21 @@ int main(int argc, char *argv[]) {
     cin >> sort;
     cout << endl;
 
-    /**
-    for (int i = 0; i < 10000; i++) {
-        cout << num[i] << " ";
-    } // for
-    cout << endl;
-    */
-
     if (sort == 's') {
         Sorting::selectionSort(num, size);
+        printArray(num, size);
         cout << "#Selection-sort comparison: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'm') {
         int * arr = Sorting::mergeSort(num, size);
+        printArray(arr, size);
         cout << "#Merge-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'h') {
-        Sorting::heapSort(num, size);
+        int * arr = Sorting::heapSort(num, size);
+        printArray(arr, size);
         cout << "#Heap-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if

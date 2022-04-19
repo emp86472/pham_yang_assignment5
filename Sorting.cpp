@@ -75,8 +75,18 @@ int * Sorting::mergeSort(int num[], int size) {
     return mergeArrays(mergeSort(Larr, l), l, mergeSort(Rarr, r), r);
 } //mergeSort
 
-void Sorting::heapSort(int num[], int size) {
+int * Sorting::heapSort(int num[], int size) {
+    int * maxHeap = buildMaxHeap(num, size);
 
+    for (int b = size - 1; b > 0; b--) {
+        //swap root and bottom
+        int temp = maxHeap[0];
+        maxHeap[0] = maxHeap[b];
+        maxHeap[b] = temp;
+
+        reheapDown(maxHeap, 0, b - 1);
+    } //for
+    return maxHeap;
 } //heapSort
 
 void Sorting::quickSortFP(int num[], int start, int end) {
@@ -134,3 +144,61 @@ int * Sorting::mergeArrays(int Larr[], int l, int Rarr[], int r) {
     } //for
     return arr;
 } //mergeArrays
+
+int * Sorting::buildMaxHeap(int num[], int size) {
+    int * maxHeap = new int[size];
+    for (int i = 0; i < size; i++) {
+        maxHeap[i] = num[i];
+        reheapUp(maxHeap, i);
+    } //for
+    return maxHeap;
+} //buildMaxHeap
+
+void Sorting::reheapUp(int num[], int b) {
+    int p = (b - 1) / 2;
+    if (b == 0) { //if there is one item
+        return;
+    } else if (num[p] < num[b]) {
+        comparisons++;
+        // perform a swap
+        int temp = num[p];
+        num[p] = num[b];
+        num[b] = temp;
+        reheapUp(num, p);
+    } //if
+} //reheapUp
+
+void Sorting::reheapDown(int num[], int root, int b) {
+    int l = root * 2 + 1;
+    int r = root * 2 + 2;
+    if (l > b) { //if  l is greater then it means r is also greater
+        return;
+    } else if (r > b) { //r is greater, but l is not, swap with l
+        if (num[root] < num[l]) {
+            swap(num[root], num[l]);
+            reheapDown(num, l, b);
+        } //if
+        comparisons++;
+    } else if (num[l] > num[r]) { //both are not greater, compare
+        if (num[root] < num[l]) {
+            swap(num[root], num[l]);
+            reheapDown(num, l, b);
+        } //if
+        comparisons++;
+        comparisons++;
+    } else {
+        if (num[root] < num[r]) {
+            swap(num[root], num[r]);
+            reheapDown(num, r, b);
+        } //if
+        comparisons++;
+        comparisons++;
+    } //if
+} //reheapDown
+
+//should make sure this works first
+void Sorting::swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+} //swap

@@ -1,4 +1,4 @@
-MAIN = test
+MAIN = main
 
 compile:
 	g++ -c -Wall -pedantic-errors Sorting.cpp
