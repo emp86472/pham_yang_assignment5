@@ -1,4 +1,4 @@
-MAIN = main
+MAIN = main2
 
 compile:
 	g++ -c -Wall -pedantic-errors Sorting.cpp
