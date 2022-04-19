@@ -32,11 +32,6 @@ int main(int argc, char *argv[]) {
         num[j] = t;
     } // for
 
-    for (int i = 0; i < size;i++) {
-        cout << num[i] << " ";
-    } // for
-    cout << endl;
-
     cout << "selection-sort (s)  merge (m)  heap-sort (h)  quick-sort-fp (q)" << endl;
     cout << "quick-sort-rp (r)" << endl;
     cout << "Enter the algorithm: ";
