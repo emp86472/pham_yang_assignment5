@@ -2,7 +2,7 @@ Ethan Pham 811467634 emp86472@uga.edu
 Kevin Yang 811467323 ky06134@uga.edu
 
 Ethan pham worked on creating Sorting.cpp, Sorting.h, makefile and report
-Kevin Yang worked on creating main.cpp, main2.cpp and report
+Kevin Yang worked on creating main.cpp, main2.cpp, makefile and report
 
 Our implementation of the algorithms are in Sorting.cpp.
 There are two mains we created. One called main.cpp which requires an input file.

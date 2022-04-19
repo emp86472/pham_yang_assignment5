@@ -1,5 +1,3 @@
-MAIN = main2
-
 compile2:
 	g++ -c -Wall -pedantic-errors Sorting.cpp
 	g++ -c -Wall -pedantic-errors main2.cpp
