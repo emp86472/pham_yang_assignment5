@@ -90,26 +90,40 @@ int * Sorting::heapSort(int num[], int size) {
 } //heapSort
 
 void Sorting::quickSortFP(int num[], int start, int end) {
-    if (start < end) {
-        int part; // partitioning index
-        int pivot = num[start]; // pivot
-        int i = (start - 1);
-        for (int j = start + 1; j <= end; j++) {
-            if (num[j] < pivot) {
-                i++;
-                int t = num[i];
-                num[i] = num[j];
-                num[j] = t;
-            } // if
-            comparisons++;
-        } // for
-         int t = num[i + 1];
-         num[i + 1] = num[end];
-         num[end] = t;
-         part = i + 1;
-         quickSortFP(num, start, part - 1);
-         quickSortFP(num, part + 1, end);
-    } // if
+    if (start >= end) {
+        return;
+    } //if
+    if (start - end == 1) {
+        if (num[start] > num[end]) {
+            swap(num[start], num[end]);
+        } //if
+        return;
+    } //if
+    int p = start; //pivot
+    bool fl = false; //found left
+    bool fr = false;
+    int r = end;
+    int l = start + 1;
+    for (int la = 1, ra = 1; l <= r; l += la, r -= ra) {
+        if (!fl && num[l] > num[p]) {
+            la = 0; //left add
+            fl = true;
+        } //if
+        if (!fr && num[r] < num[p]) {
+            ra = 0; //right add
+            fr = true;
+        } //if
+        if (fl && fr) {
+            swap(num[l], num[r]);
+            fl = false;
+            fr = false;
+            la = 1;
+            ra = 1;
+        } //if
+    } //for
+    swap(num[p], num[r]);
+    quickSortFP(num, start, r - 1);
+    quickSortFP(num, r + 1, end);
 } //quickSortFP
 
 void Sorting::quickSortRP(int num[], int start, int end) {
