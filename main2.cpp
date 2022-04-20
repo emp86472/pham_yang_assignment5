@@ -8,6 +8,13 @@
 
 using namespace std;
 
+void printArray(int num[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << num[i] << " ";
+    } //for
+    cout << endl;
+} //printArray
+
 int main(int argc, char *argv[]) {
 
     cout << "Size of Input: ";
@@ -39,23 +46,13 @@ int main(int argc, char *argv[]) {
     cin >> sort;
     cout << endl;
 
-    /**
-    for (int i = 0; i < 10000; i++) {
-        cout << num[i] << " ";
-    } // for
-    cout << endl;
-    */
-
     if (sort == 's') {
         Sorting::selectionSort(num, size);
         cout << "#Selection-sort comparison: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'm') {
-        int * arr = Sorting::mergeSort(num, size);
-        for (int i = 0; i < size;i++) {
-            cout << arr[i] << " ";
-        }
+        Sorting::mergeSort(num, size);
         cout << endl;
         cout << "#Merge-sort comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
@@ -66,12 +63,12 @@ int main(int argc, char *argv[]) {
         exit(1);
     } // if
     if (sort == 'q') {
-        Sorting::quickSortFP(num, 0, 10000);
+        Sorting::quickSortFP(num, 0, size - 1);
         cout << "#Quick-sort-fp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
     if (sort == 'r') {
-        Sorting::quickSortRP(num, 0, 10000);
+        Sorting::quickSortRP(num, 0, size - 1);
         cout << "#Quick-sort-rp comparisons: " << Sorting::getComparisons() << endl;
         exit(1);
     } // if
