@@ -110,11 +110,16 @@ void Sorting::quickSortFP(int num[], int start, int end) {
             la = 0; //left add
             fl = true;
         } //if
+        if (!fl) {
+            comparisons++;
+        } //if
         if (!fr && num[r] < num[p]) {
             ra = 0; //right add
             fr = true;
         } //if
-        comparisons += 2;
+        if (!fr) {
+            comparisons++;
+        } //if
         if (fl && fr) {
             swap(num[l], num[r]);
             fl = false;
@@ -155,11 +160,16 @@ void Sorting::quickSortRP(int num[], int start, int end) {
             la = 0; //left add
             fl = true;
         } //if
+        if (!fl) {
+            comparisons++;
+        } //if
         if (!fr && num[r] < num[p]) {
             ra = 0; //right add
             fr = true;
         } //if
-        comparisons += 2;
+        if (!fr) {
+            comparisons++;
+        } //if
         if (fl && fr) {
             swap(num[l], num[r]);
             fl = false;
