@@ -129,6 +129,48 @@ void Sorting::quickSortFP(int num[], int start, int end) {
 } //quickSortFP
 
 void Sorting::quickSortRP(int num[], int start, int end) {
+    if (start >= end) {
+        return;
+    } //if
+    if (start - end == 1) {
+        if (num[start] > num[end]) {
+            swap(num[start], num[end]);
+        } //if
+        comparisons++;
+        return;
+    } //if
+
+    int range = end - start;
+    srand(time(0));
+    int random = rand() % range + start;
+
+    int p = start; //pivot
+    swap(num[p], num[random]);
+    bool fl = false; //found left
+    bool fr = false;
+    int r = end;
+    int l = start + 1;
+    for (int la = 1, ra = 1; l <= r; l += la, r -= ra) {
+        if (!fl && num[l] > num[p]) {
+            la = 0; //left add
+            fl = true;
+        } //if
+        if (!fr && num[r] < num[p]) {
+            ra = 0; //right add
+            fr = true;
+        } //if
+        comparisons += 2;
+        if (fl && fr) {
+            swap(num[l], num[r]);
+            fl = false;
+            fr = false;
+            la = 1;
+            ra = 1;
+        } //if
+    } //for
+    swap(num[p], num[r]);
+    quickSortFP(num, start, r - 1);
+    quickSortFP(num, r + 1, end);
 } //quickSortRP
 
 /**
